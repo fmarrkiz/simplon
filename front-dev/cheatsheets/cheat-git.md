@@ -2,12 +2,12 @@
 
 ### …or create a new repository on the command line
 
-echo "# DEV-FRONT" >> README.md  (
-git init <br>
-git add README.md<br>
-git commit -m "first commit"<br>
-git branch -M main<br>
-git remote add origin git@github.com:fmarrkiz/DEV-FRONT.git<br>
+echo "# DEV-FRONT" >> README.md  
+git init  
+git add README.md  
+git commit -m "first commit"  
+git branch -M main  
+git remote add origin git@github.com:fmarrkiz/DEV-FRONT.git   
 git push -u origin main
 
 ### …or push an existing repository from the command line
@@ -124,8 +124,7 @@ Project directory --- Git repository (hidden in the project dir)
 - From staging area to local git --- `git commit -m ""`
 - From local git to github --- `git push origin main` [origin is where we wanna put it; main is the branch we're pushing]
 
-
-
+![ Gitflow](https://i.sstatic.net/y5O09.png)
 Example
 
 | directory| staging area  <br> `git add` | repo  <br> `git commit -m "initial commit`   |
@@ -330,6 +329,18 @@ Careful with this command
 
 #### Going back to an earlier change
 
+**restoring a file to previous version** (not undoing a change)
+
+`git log --oneline`
+
+`git restore [<options>] [--source=<branch] <file>`<br>
+Default behaviour : 
+- if the file we want to restore is in the working directory it'll will restore it from the staging area
+- if the file we want to restore is in the staging area, it'll will restore it from the last commit
+
+to change 
+
+`git restore --source=HEAD~1 file1.js`
 
 
 

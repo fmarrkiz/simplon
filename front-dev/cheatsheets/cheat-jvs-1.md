@@ -83,6 +83,16 @@ alert( "the result is ${1 + 2}" ); // le résultat est ${1 + 2} (les doubles quo
  Le type booléen n'a que deux valeurs logique: `true` et `false`
 Ce type est couramment utilisé pour stocker des valeurs oui/non
 
+In JavaScript, the following values are falsy (i.e. they convert to false when coerced to a Boolean):
+
+- "" (empty string)
+- 0
+- null
+- undefined
+- NaN
+- false
+
+"0" is a string, not a number, and it's not empty — so it's truthy.
 
 5.  ***La valeur `null`***
 
@@ -138,7 +148,7 @@ const person = { name: "Alice", age: 25};
 
 Il y a plusieurs types d'object : <!--(à retravailler)-->
 
-- *array* (list-like object)
+- *array* (list-like object/ tableau) 
 ```javascript
 const numbers = [1,2,3,4];
 ```
@@ -372,7 +382,7 @@ Les opérations mathématiques suivantes sont supportées :
 - Soustraction `-`
 - Multiplication `*`
 - Division `/`
-- Reste `%`
+- Reste ou Remainder ou Modulo`%`
 
 Le résultat de `a % b` est le reste de la division entière de `a` par `b`.
 ```javascript
@@ -452,6 +462,9 @@ alert( +y); // -2
 alert( +true ); // 1
 alert( +""); // 0
 // Comme Number() mais en plus court
+
+
+alert( +"frfffefw" ); // NaN
 ```
 
 
@@ -466,9 +479,6 @@ alert( +apples + +oranges ); // 5
 //équivalent de ( Number(apples) + Number(oranges) );
 ```
 
-**Question**
-Pourquoi ne pas directement faire `let apples = 2;`
-
 En programmation, les plus unaires sont appliqués en premier, ils convertissent les chaînes de caractères en nombres, puis le plus binaire les additionne.
 
 ### Précédence des opérateurs
@@ -481,8 +491,12 @@ Aussi, les opérateurs unaires ont une priorité plus élevée que les binaires 
 
 cf [tableau de précédence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence)
 
+Dans le doute, mettre des parenthèses. 
+
 ### Affectation
 
+
+Différent d'égalite (`==` ou `===`)
 `=` a une faible précédence
 
 ```javascript
@@ -569,7 +583,7 @@ let x = 1 + (a *=2);
 
 ### Incrémentation/ décrémentation
 
-L'augmentation ou la diminution d'un nombre par `1` est identique à `++` et à `--`
+L'augmentation ou la diminution d'un **nombre** par `1` est identique à `++` et à `--`
 
 - **Incrémentation**
 ```javascript
@@ -663,7 +677,7 @@ alert( b ); // 2, incrémenté une fois
 
 ### Opérateurs binaires
 
-- Les opérateurs binaires traitent les argument comme des nombres entiers de 32 bits et travaillent au niveau de leur représentation binaire.
+- Les opérateurs binaires traitent les argument comme des nombres entiers de 32 bits (pour éviter de consommer trop d mémoire) et travaillent au niveau de leur représentation binaire.
 - pas spécifiques à JVS
 
 Liste des opérateurs :
