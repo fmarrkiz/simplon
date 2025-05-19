@@ -320,6 +320,7 @@ Les règles ci-dessus sont similaires à OR. La différence est que AND retourne
 
 `&&` a une plus grande précédence que `||`
 
+`&` would check both values
 
 - `!` (NOT)
 
@@ -338,7 +339,7 @@ La précédence de NOT `!` est la plus élevée de tous les opérateurs binaire,
 
 - `??` (Coalescence des nulles)
 
-
+Le cas d’utilisation courant de `??` est de fournir une valeur par défaut.
 
 ## Comprendre les conditions en Javascript
 [lien](https://fr.javascript.info/ifelse)
