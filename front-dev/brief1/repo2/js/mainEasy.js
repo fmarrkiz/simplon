@@ -25,10 +25,9 @@ if (inputValue === "") {
     
     let NewItem = document.createElement("li");
     NewItem.innerText = inputValue;
-    NewItem.classList.add("quantity");
+    NewItem.classList.add("toDo-item");
     ToDoList.appendChild(NewItem);
     
-
     let TaskQuantity = 1;
     let quantity = document.createElement("span");
     quantity.classList.add("quantity");
@@ -36,41 +35,49 @@ if (inputValue === "") {
     quantity.style.display ="none";
     NewItem.appendChild(quantity);
 
+    let buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
+    NewItem.appendChild(buttonContainer);
+
     let deleteButton = document.createElement("button");
-    deleteButton.innerHTML = "&#8722";
-    ToDoList.appendChild(deleteButton);
-    deleteButton.addEventListener("click", deleteQuantity);
+    deleteButton.innerHTML = "&#8722;";
+    deleteButton.classList.add("delete-btn");
+    buttonContainer.appendChild(deleteButton);
 
     let addButton = document.createElement("button");
-    addButton.innerHTML = "&#43";
-    ToDoList.appendChild(addButton);
-    addButton.addEventListener("click", addQuantity);
+    addButton.innerHTML = "&#43;";
+    addButton.classList.add("add-btn");
+    buttonContainer.appendChild(addButton);
+
+    deleteButton.addEventListener("click",function () {
+        deleteQuantity(NewItem, quantity);
+    });
+
+    addButton.addEventListener("click", function () {
+        addQuantity(NewItem, quantity);
+    });
 
     toDoInput.value = "";
-
+    toDoInput.focus();
        }
 } 
 
+function deleteQuantity(NewItem, quantity) {
+    let currentQuantity = parseInt(quantity.innerText.replace("x", ""));
+   if (currentQuantity > 1) {
+        currentQuantity--;
+        quantity.innerText = `x${currentQuantity}`; 
+      } else {
+        ToDoList.removeChild(NewItem);
+}
+}
 
-function addQuantity() {
-quantity.style.display ="block";
-quantity.innerText = `x${TaskQuantity}`;
-TaskQuantity++;
-NewItem.appendChild(TaskQuantity);
+function addQuantity(NewItem, quantity) {
+let currentQuantity = parseInt(quantity.innerText.replace("x", ""));
+currentQuantity++;
+quantity.innerText = `x${currentQuantity}`;
+quantity.style.display ="inline";
+
 }
     
-function deleteQuantity() {
-    if (TaskQuantity === 1) {
-            ToDoList.removeChild(NewItem);
-            ToDoList.removeChild(deleteButton);
-            ToDoList.removeChild(addButton);
-            ToDoList.removeChild(quantity);
-        
-    } else if (TaskQuantity > 1) {
-        TaskQuantity--;
-        quantity.innerText = `x${TaskQuantity}`;
-        NewItem.appendChild(TaskQuantity);  
-    }
-
-}
 
